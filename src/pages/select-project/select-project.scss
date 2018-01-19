@@ -1,0 +1,26 @@
+page-select-project {
+.searchBTN{
+  width:90%;
+  height:23px;
+  margin-left:5%;
+  margin-right:5%;
+  margin-top: 10px;
+  background-color: #f2f2f3;
+  color: #b9b9b9;
+}
+  .proBTN{
+    color: #488aff;
+    border-bottom:#dedede 1px solid;
+  }
+  //安卓平台用于去除item的下划线
+  .list-md .item-block .item-inner{
+    border-bottom:none;
+  }
+  //苹果平台用于去除item的下划线
+  .list-ios .item-block .item-inner{
+    border-bottom:none;
+  }
+  .toolbar-title-md{
+    text-align:center;
+  }
+}

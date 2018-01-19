@@ -1,0 +1,103 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only navPop color="royal">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>混凝土浇筑旁站</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="save()">
+        <ion-icon name="copy"></ion-icon>
+      </button>
+      <button ion-button icon-only color="royal" (click)="upload()">
+        <ion-icon name="cloud-upload"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding overflow-scroll="true">
+<ion-list>
+  <ion-item >
+    <ion-label color="primary" stacked>关键部位:</ion-label>
+    <ion-input type="number" [(ngModel)]="part" placeholder="X层结构剪力墙、柱"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary" stacked>关键工序:</ion-label>
+    <ion-input type="number" [(ngModel)]="gongxu"  placeholder="X层梁、板混凝土浇筑"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary" stacked>旁站计划开始时间</ion-label>
+      <ion-datetime displayFormat="YYYY年MM月DD日 HH：mm" cancelText="取消" doneText="确定" placeholder="计划开始日期" pickerFormat="YYYY-MM-DD HH:mm" [(ngModel)]="planStartTime"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label  color="primary" stacked>旁站计划结束时间</ion-label>
+    <ion-datetime displayFormat="YYYY年MM月DD日 HH：mm" cancelText="取消" doneText="确定" placeholder="计划结束日期" [(ngModel)]="planEndTime" (ionChange)="changePlanDate()"></ion-datetime>
+  </ion-item>
+<ion-item>
+  <ion-label  color="primary" stacked>旁站开始时间</ion-label>
+  <ion-datetime displayFormat="YYYY年MM月DD日 HH：mm" cancelText="取消" doneText="确定" placeholder="开始日期" [(ngModel)]="startTime"></ion-datetime>
+</ion-item>
+  <ion-item>
+    <ion-label  color="primary" stacked>旁站结束时间</ion-label>
+    <ion-datetime displayFormat="YYYY年MM月DD日 HH：mm" cancelText="取消" doneText="确定" placeholder="结束日期" [(ngModel)]="endTime" (ionChange)="changeDate()"></ion-datetime>
+  </ion-item>
+    <ion-label  color="primary" style="font-size: 1.0em;">施工情况</ion-label>
+    <div margin-left="5%" margin-top="5%" class="xiahuaxian" style="text-indent: 2em">
+      <div>
+      1.采用<input type="text"  class="hengxian"  [(ngModel)]="w1" style="width:30%">商品混凝土厂家生产的商品砼，
+      <input type="number"  class="hengxian"  [(ngModel)]="w2" style="width:20%">根振动棒振捣，现场有施工员
+      <input type="number"  class="hengxian"  [(ngModel)]="w3" style="width:20%">名，
+      质检员<input type="number"  class="hengxian"  [(ngModel)]="w4" style="width:20%">
+      名，施工作业人员<input type="number"  class="hengxian"  [(ngModel)]="w5" style="width:20%">
+      名，完成的混凝土数量共有<input type="number"  class="hengxian"  [(ngModel)]="w6" style="width:20%">
+      m3，其中X层剪力墙、柱C40，<input type="number"  class="hengxian"  [(ngModel)]="w7" style="width:20%">
+      m3，Y层梁、板C30，<input type="number"  class="hengxian"  [(ngModel)]="w8" style="width:20%">
+      m3,润滑砼泵管的砂浆已用接料斗另外装着，没有直接灌入柱、墙、板中。<br>
+      </div>
+      <div>
+        2.施工顺序、施工缝的处理均按施工方案进行施工。现场共抽查砼坍落度
+        <input type="number"  class="hengxian"  [(ngModel)]="w9" style="width:20%">次，
+        设计坍落度为<input type="number"  class="hengxian"  [(ngModel)]="w10" style="width:20%">
+        mm，实际为<input type="number"  class="hengxian"  [(ngModel)]="w11" style="width:20%">
+        mm，符合设计及规范要求,砼严禁加生水。
+        现场共做混凝土试块10组，其中C30<input type="number"  class="hengxian"  [(ngModel)]="w12" style="width:20%">
+        组，标养<input type="number"  class="hengxian"  [(ngModel)]="w13" style="width:20%">
+        组，同条件 <input type="number"  class="hengxian"  [(ngModel)]="w14" style="width:20%">
+        组；C40 <input type="number"  class="hengxian"  [(ngModel)]="w15" style="width:20%">
+        组，标养<input type="number"  class="hengxian"  [(ngModel)]="w16" style="width:20%">
+        组，同条件<input type="number"  class="hengxian"  [(ngModel)]="w17" style="width:20%">
+        组。抽查了板砼的厚度共<input type="number"  class="hengxian"  [(ngModel)]="w18" style="width:20%">
+        处，设计厚度为<input type="number"  class="hengxian"  [(ngModel)]="w19" style="width:20%">
+        mm，实际为<input type="number"  class="hengxian"  [(ngModel)]="w20" style="width:20%">mm，符合设计及规范要求。
+        剪力墙、柱、梁、板浇捣顺序，剪力墙、柱与梁、板不同标号砼之间的处理措施严格按照施工方案执行。
+        砼浇筑完后，施工单位对梁板砼表面进行了二次压实，并采用薄膜和（或）毛毡覆盖保养。
+      </div>
+      <ion-label  color="primary" style="font-size: 1.0em;text-indent:0">施工情况附加信息</ion-label>
+      <textarea [(ngModel)]="w21" style="width:100%;height:100px;resize: none;border-top: 1px solid #b9b9b9"></textarea>
+    </div>
+  <ion-item>
+    <ion-label color="primary" stacked>发现的问题</ion-label>
+    <ion-input placeholder="发现的问题" [(ngModel)]="findProblem" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary" stacked>处理情况</ion-label>
+    <ion-input placeholder="处理情况" [(ngModel)]="dealCase" type="text"></ion-input>
+  </ion-item>
+  <ion-label  color="primary" style="font-size: 1.0em;margin-left:5%">现场照片</ion-label>
+  <div margin-left="5%" margin-top="5%" class="xiahuaxian">
+    <ul style="list-style: none;margin:0;padding:0">
+      <li *ngFor="let photo of photoes;let i=index" style="display: inline-block;margin-right: 5px;position: relative">
+        <img style="width:120px;height:120px;display: inline-block" [src]="photoes[i].src">
+        <ion-icon name="close" small style="position: absolute;right:0;top:0;background-color:#36ff4e;" (click)="deletePhoto(i)"></ion-icon>
+      </li>
+      <img class="photoBT" (click)="addPhoto()" src="./assets/icon/paizhao.png">
+    </ul>
+    </div>
+</ion-list>
+</ion-content>

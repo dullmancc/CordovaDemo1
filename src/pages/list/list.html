@@ -1,0 +1,45 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>任务列表</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+  <ion-grid text-center>
+    <ion-row >
+      <ion-col>
+        行政区县级
+      </ion-col>
+      <ion-col>
+        样品号ID
+      </ion-col>
+      <ion-col>
+        任务状态
+      </ion-col>
+      <ion-col>
+      </ion-col>
+    </ion-row>
+    <ion-item *ngFor="let item of items;let i=index" (click)="detail(item)">
+    <ion-row>
+      <ion-col>
+        {{item.t_CollectionPoint.District}}
+      </ion-col>
+      <ion-col>
+        {{item.t_CollectionPoint.CollectionPointID}}
+      </ion-col>
+      <ion-col>
+        <span [ngStyle]="{color:proitems[i].color}">{{proitems[i].part}}</span>
+      </ion-col>
+      <ion-col >
+        <ion-icon name="arrow-forward" style="margin-left: 20%"></ion-icon>
+      </ion-col>
+    </ion-row>
+    </ion-item>
+  </ion-grid>
+  </ion-list>
+</ion-content>
