@@ -1,0 +1,41 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="backSelect()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title text-center>
+      旁站记录
+    </ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="newRecord()">
+        <ion-icon ios="ios-add-circle-outline" md="md-add-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<!--style="background-color: #d6d6d6;"-->
+
+<ion-content >
+  <div *ngFor="let recordClass of recordClasses;let i=index">
+  <button  ion-button class="myButton" (click)="togglelist(i)">
+    <ion-icon [name]="iconName[i]"></ion-icon>
+    <span margin-left="8px">{{recordClass}}</span>
+  </button>
+  <ion-list style="margin: 0">
+      <ion-item class="lineList" *ngFor="let uncompleteItem of getRecord(recordClass);" [hidden]="hiddenItem[i]">
+        <ion-avatar item-start>
+           <img src="./assets/icon/user.jpg">
+         </ion-avatar>
+         <h2 >{{uncompleteItem.part}}</h2>
+         <p item-right>{{uncompleteItem.datetime}}</p>
+     </ion-item>
+  </ion-list>
+  </div>
+
+</ion-content>
+
